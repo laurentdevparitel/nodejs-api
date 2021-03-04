@@ -1,0 +1,362 @@
+{
+	"info": {
+		"_postman_id": "baec9f32-2af6-45b6-9db4-292def1541ad",
+		"name": "NodeJS API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index?opts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/products?limit=10&offset=1&tag=liquid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "1"
+								},
+								{
+									"key": "tag",
+									"value": "liquid"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/products/cklcj1lem0000fciv2grdhe03",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"products",
+								"cklcj1lem0000fciv2grdhe03"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldsY3pqSEQxZ1RvNkJYTjY1bXp3QyJ9.eyJpc3MiOiJodHRwczovL2Rldi0zdDJ6dWtzaS5ldS5hdXRoMC5jb20vIiwic3ViIjoiNHBzcG9pbEtNQ1lHeGNBTnNudEJqRkJnUzV3eDFrMnBAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYWRzLWFwaSIsImlhdCI6MTYxMTkzMzcyNywiZXhwIjoxNjEyMDIwMTI3LCJhenAiOiI0cHNwb2lsS01DWUd4Y0FOc250QmpGQmdTNXd4MWsycCIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.D-w3iapEgRItvBqPLHGlf67muIvfJVQ8QbWCauvDOjjw5ngd87w8Iio7dupiaPSILW4cnomIt5DFrOC1VLqOnyUG0PUH_zLxO-kA05X1Trs3hMDLG4bAsW3JO3N4arXhm0PntO6y8b8b0GEgnZLYzn6BCCCmFlKkYltGPDue0UFschTjchhbAFH4fAA7DGTREa4m8n1-rLMVwjIewhaTcWPDMYPx-5s4SRTj8J8lLFhFwkTPHl3x9ucJCht0Bl9PnJ_IDzZWbcGy1CxVFvdvH-6Jrqm3137Yq5mnD3EuEYLGPdzthjfIt8X4jmrCmc4zH4U5jJJkjhzmyQ8aR00D5g"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Rug that really ties the room together\",\r\n    \"imgThumb\": \"https://images.unsplash.com/photo-1534889156217-d643df14f14a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjY0MjAxfQ\",\r\n    \"img\": \"https://images.unsplash.com/photo-1534889156217-d643df14f14a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjY0MjAxfQ\",\r\n    \"link\": \"https://unsplash.com/photos/Vra_DPrrBlE\",\r\n    \"userId\": \"GPlq8En0xhg\",\r\n    \"userName\": \"Ryan Christodoulou\",\r\n    \"userLink\": \"https://unsplash.com/@misterdoulou\",\r\n    \"tags\": [\r\n        \"rug\",\r\n        \"room\",\r\n        \"home\",\r\n        \"bowling\"\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"TEST - Rug that really ties the room together\",\r\n    \"imgThumb\": \"https://images.unsplash.com/photo-1534889156217-d643df14f14a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjY0MjAxfQ\",\r\n    \"img\": \"https://images.unsplash.com/photo-1534889156217-d643df14f14a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjY0MjAxfQ\",\r\n    \"link\": \"https://unsplash.com/photos/Vra_DPrrBlE\",\r\n    \"userId\": \"GPlq8En0xhg\",\r\n    \"userName\": \"Ryan Christodoulou\",\r\n    \"userLink\": \"https://unsplash.com/@misterdoulou\",\r\n    \"tags\": [\r\n        \"rug\",\r\n        \"room\",\r\n        \"home\",\r\n        \"bowling\"\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/products/cjv32mizj0003c9gl1p2nd24x",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"products",
+								"cjv32mizj0003c9gl1p2nd24x"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3001/products/cklcj1lem0000fciv2grdhe03",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"products",
+								"cklcj1lem0000fciv2grdhe03"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "index",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3001/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "store",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldsY3pqSEQxZ1RvNkJYTjY1bXp3QyJ9.eyJpc3MiOiJodHRwczovL2Rldi0zdDJ6dWtzaS5ldS5hdXRoMC5jb20vIiwic3ViIjoiNHBzcG9pbEtNQ1lHeGNBTnNudEJqRkJnUzV3eDFrMnBAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYWRzLWFwaSIsImlhdCI6MTYxMTkzMzcyNywiZXhwIjoxNjEyMDIwMTI3LCJhenAiOiI0cHNwb2lsS01DWUd4Y0FOc250QmpGQmdTNXd4MWsycCIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.D-w3iapEgRItvBqPLHGlf67muIvfJVQ8QbWCauvDOjjw5ngd87w8Iio7dupiaPSILW4cnomIt5DFrOC1VLqOnyUG0PUH_zLxO-kA05X1Trs3hMDLG4bAsW3JO3N4arXhm0PntO6y8b8b0GEgnZLYzn6BCCCmFlKkYltGPDue0UFschTjchhbAFH4fAA7DGTREa4m8n1-rLMVwjIewhaTcWPDMYPx-5s4SRTj8J8lLFhFwkTPHl3x9ucJCht0Bl9PnJ_IDzZWbcGy1CxVFvdvH-6Jrqm3137Yq5mnD3EuEYLGPdzthjfIt8X4jmrCmc4zH4U5jJJkjhzmyQ8aR00D5g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Pizza\",\r\n  \"price\": 10.5\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:3001/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldsY3pqSEQxZ1RvNkJYTjY1bXp3QyJ9.eyJpc3MiOiJodHRwczovL2Rldi0zdDJ6dWtzaS5ldS5hdXRoMC5jb20vIiwic3ViIjoiNHBzcG9pbEtNQ1lHeGNBTnNudEJqRkJnUzV3eDFrMnBAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYWRzLWFwaSIsImlhdCI6MTYxMTkzMzcyNywiZXhwIjoxNjEyMDIwMTI3LCJhenAiOiI0cHNwb2lsS01DWUd4Y0FOc250QmpGQmdTNXd4MWsycCIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.D-w3iapEgRItvBqPLHGlf67muIvfJVQ8QbWCauvDOjjw5ngd87w8Iio7dupiaPSILW4cnomIt5DFrOC1VLqOnyUG0PUH_zLxO-kA05X1Trs3hMDLG4bAsW3JO3N4arXhm0PntO6y8b8b0GEgnZLYzn6BCCCmFlKkYltGPDue0UFschTjchhbAFH4fAA7DGTREa4m8n1-rLMVwjIewhaTcWPDMYPx-5s4SRTj8J8lLFhFwkTPHl3x9ucJCht0Bl9PnJ_IDzZWbcGy1CxVFvdvH-6Jrqm3137Yq5mnD3EuEYLGPdzthjfIt8X4jmrCmc4zH4U5jJJkjhzmyQ8aR00D5g",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Pizza TEST\",\r\n  \"price\": 12\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3001/60142492c761b1572425b9aa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"60142492c761b1572425b9aa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldsY3pqSEQxZ1RvNkJYTjY1bXp3QyJ9.eyJpc3MiOiJodHRwczovL2Rldi0zdDJ6dWtzaS5ldS5hdXRoMC5jb20vIiwic3ViIjoiNHBzcG9pbEtNQ1lHeGNBTnNudEJqRkJnUzV3eDFrMnBAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYWRzLWFwaSIsImlhdCI6MTYxMTkzMzcyNywiZXhwIjoxNjEyMDIwMTI3LCJhenAiOiI0cHNwb2lsS01DWUd4Y0FOc250QmpGQmdTNXd4MWsycCIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.D-w3iapEgRItvBqPLHGlf67muIvfJVQ8QbWCauvDOjjw5ngd87w8Iio7dupiaPSILW4cnomIt5DFrOC1VLqOnyUG0PUH_zLxO-kA05X1Trs3hMDLG4bAsW3JO3N4arXhm0PntO6y8b8b0GEgnZLYzn6BCCCmFlKkYltGPDue0UFschTjchhbAFH4fAA7DGTREa4m8n1-rLMVwjIewhaTcWPDMYPx-5s4SRTj8J8lLFhFwkTPHl3x9ucJCht0Bl9PnJ_IDzZWbcGy1CxVFvdvH-6Jrqm3137Yq5mnD3EuEYLGPdzthjfIt8X4jmrCmc4zH4U5jJJkjhzmyQ8aR00D5g",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3001/6014226892469346003e54f1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"6014226892469346003e54f1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
