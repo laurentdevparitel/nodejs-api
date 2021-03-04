@@ -38,9 +38,11 @@ const ensureAdmin = (req, res, next) => {
     const isAdmin = req.user && req.user.username === 'admin'
     if (isAdmin) return next()
 
-    const err = new Error('Unauthorized')
+    res.status(401).json({ error: 'Unauthorized' })
+
+    /*const err = new Error('Unauthorized')
     err.statusCode = 401
-    next(err)
+    next(err)*/
 }
 
 const login = (req, res, next) => {

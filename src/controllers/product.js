@@ -20,7 +20,7 @@ const Product = require('../models/Product')
  DELETE 	/comments/{comment} 	destroy 	comments.destroy
 
  */
-async function list (req, res) {
+async function list (req, res, next) {
 
     const { offset = 0, limit = 25, tag } = req.query
 

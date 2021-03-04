@@ -1,7 +1,9 @@
 const Order = require('../models/Order')
 
+// helpers
+//const { autoCatch } = require('../helpers/helpers') // KO ?
 
-async function list (req, res) {
+async function list (req, res, next) {
 
     const { offset = 0, limit = 25, productId, status } = req.query
 
