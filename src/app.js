@@ -53,7 +53,7 @@ app.use(cookieParser())
 app.disable('x-powered-by');
 
 // Auth
-auth.setMiddleware(app)
+//auth.setMiddleware(app) // NB: if session cookie id
 
 /**
  * routes
