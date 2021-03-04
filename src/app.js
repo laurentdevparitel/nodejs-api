@@ -24,6 +24,7 @@ const middleware = require('./middlewares/middleware')
 // API
 const productController = require('./controllers/product')
 const orderController = require('./controllers/order')
+const userController = require('./controllers/user')
 
 const port = global.gConfig.node_port || 1337
 //const port = process.env.PORT || 1337
@@ -58,6 +59,8 @@ app.disable('x-powered-by');
 /**
  * routes
  */
+
+app.post('/users', userController.create)
 
 app.post('/login', auth.authenticate, auth.login)
 
