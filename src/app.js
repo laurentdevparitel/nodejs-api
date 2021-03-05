@@ -76,14 +76,14 @@ app.post('/login', auth.authenticate, auth.login)
 // -- products
 app.get('/products', productController.list)
 app.get('/products/:id', productController.get)
-app.post('/products', auth.ensureAdmin, productController.create)
-app.put('/products/:id', auth.ensureAdmin, productController.edit)
-app.delete('/products/:id', auth.ensureAdmin, productController.destroy)
+app.post('/products', auth.ensureUser, productController.create)
+app.put('/products/:id', auth.ensureUser, productController.edit)
+app.delete('/products/:id', auth.ensureUser, productController.destroy)
 
 // -- orders
-app.get('/orders', auth.ensureAdmin, orderController.list)
-app.get('/orders/:id', auth.ensureAdmin, orderController.get)
-app.post('/orders', auth.ensureAdmin, orderController.create)
+app.get('/orders', auth.ensureUser, orderController.list)
+app.get('/orders/:id', auth.ensureUser, orderController.get)
+app.post('/orders', auth.ensureUser, orderController.create)
 
 app.use(middleware.handleValidationError)
 app.use(middleware.handleError)

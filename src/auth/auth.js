@@ -67,6 +67,26 @@ const ensureAdmin = async (req, res, next) => {
     //next(err)
 }
 
+async function ensureUser (req, res, next) {
+    try {
+        const jwtString = req.headers.authorization || req.cookies.jwt
+        const payload = await verify(jwtString)
+
+        if (payload.username) {
+            req.user = payload
+            if (req.user.username === 'admin') req.isAdmin = true
+            return next()
+        }
+    }
+    catch (err){
+        res.status(401).json({ error: `Unauthorized : ${err}` })
+    }
+
+    //const err = new Error('Unauthorized')
+    //err.statusCode = 401
+    //next(err)
+}
+
 
 // NB: if session cookie id
 
@@ -120,4 +140,6 @@ module.exports = {
     //ensureAdmin: autoCatch(ensureAdmin),
     login,
     //login: autoCatch(login),
+
+    ensureUser
 }

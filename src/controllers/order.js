@@ -8,13 +8,17 @@ async function list (req, res, next) {
     const { offset = 0, limit = 25, productId, status } = req.query
 
     try {
-
-        const orders = await Order.list({
+        const opts = {
             offset: Number(offset),
             limit: Number(limit),
             productId,
             status
-        })
+        }
+        if (!req.isAdmin){
+            opts.username = req.user.username
+        }
+
+        const orders = await Order.list(opts)
 
         res.json({ data: orders})
     } catch (err) {
@@ -38,6 +42,11 @@ async function get (req, res, next) {
 async function create (req, res, next) {
 
     try {
+        const fields = req.body
+        if (!req.isAdmin){
+            fields.username = req.user.username
+        }
+
         const order = await Order.create(req.body)
         res.json(order)
     } catch (err) {

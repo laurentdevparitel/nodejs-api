@@ -53,7 +53,8 @@ async function get (req, res, next) {
 async function create (req, res, next) {
 
     try {
-        //console.log('request body:', req.body)
+        if (!req.isAdmin) return forbidden(next)
+
         const product = await Product.create(req.body)
         res.json({data: req.body})
     } catch (err) {
@@ -64,6 +65,8 @@ async function create (req, res, next) {
 async function edit (req, res, next) {
 
     try {
+        if (!req.isAdmin) return forbidden(next)
+
         const change = req.body
         const product = await Product.edit(req.params.id, change)
         res.json({data: product})
@@ -73,8 +76,17 @@ async function edit (req, res, next) {
 }
 
 async function destroy (req, res, next) {
+    if (!req.isAdmin) return forbidden(next)
+
     await Product.remove(req.params.id)
     res.json({ success: true })
+}
+
+
+function forbidden (next) {
+    const err = new Error('Forbidden')
+    err.statusCode = 403
+    return next(err)
 }
 
 module.exports = {
