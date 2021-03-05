@@ -1,15 +1,15 @@
 {
 	"info": {
-		"_postman_id": "baec9f32-2af6-45b6-9db4-292def1541ad",
+		"_postman_id": "ca9133b2-88b3-42d6-8fff-75398256bb7f",
 		"name": "NodeJS API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Products",
+			"name": "User",
 			"item": [
 				{
-					"name": "/",
+					"name": "index",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -21,19 +21,279 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3001/",
+							"raw": "http://localhost:3001/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3001",
 							"path": [
-								""
+								"users"
 							]
 						}
 					},
 					"response": []
 				},
+				{
+					"name": "index?opts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/users?limit=10&offset=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/users/walter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								"walter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldsY3pqSEQxZ1RvNkJYTjY1bXp3QyJ9.eyJpc3MiOiJodHRwczovL2Rldi0zdDJ6dWtzaS5ldS5hdXRoMC5jb20vIiwic3ViIjoiNHBzcG9pbEtNQ1lHeGNBTnNudEJqRkJnUzV3eDFrMnBAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYWRzLWFwaSIsImlhdCI6MTYxMTkzMzcyNywiZXhwIjoxNjEyMDIwMTI3LCJhenAiOiI0cHNwb2lsS01DWUd4Y0FOc250QmpGQmdTNXd4MWsycCIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.D-w3iapEgRItvBqPLHGlf67muIvfJVQ8QbWCauvDOjjw5ngd87w8Iio7dupiaPSILW4cnomIt5DFrOC1VLqOnyUG0PUH_zLxO-kA05X1Trs3hMDLG4bAsW3JO3N4arXhm0PntO6y8b8b0GEgnZLYzn6BCCCmFlKkYltGPDue0UFschTjchhbAFH4fAA7DGTREa4m8n1-rLMVwjIewhaTcWPDMYPx-5s4SRTj8J8lLFhFwkTPHl3x9ucJCht0Bl9PnJ_IDzZWbcGy1CxVFvdvH-6Jrqm3137Yq5mnD3EuEYLGPdzthjfIt8X4jmrCmc4zH4U5jJJkjhzmyQ8aR00D5g",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"walter\",\r\n  \"email\": \"walter@sobchak.io\",\r\n  \"password\": \"titi\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{ACCESS_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"walter3\",\r\n  \"email\": \"walter2@sobchak.io\",\r\n  \"password\": \"@Azerty12345\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/users/walter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								"walter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{ACCESS_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3001/users/walter2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								"walter2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"function setEnvironmentVar(){",
+									"    ",
+									"    var json;",
+									"    ",
+									"    if (typeof (responseBody) === \"undefined\"){",
+									"        throw new Error(\"responseBody is undefined !\");",
+									"    }",
+									"    ",
+									"    try { ",
+									"        json = JSON.parse(responseBody);",
+									"        console.log('json:', json);",
+									"        ",
+									"         if (typeof(json.data) === \"undefined\"){",
+									"            throw new Error(\"data entry not found !\");",
+									"        }",
+									"        ",
+									"        if (typeof(json.data.access_token) === \"undefined\"){",
+									"            throw new Error(\"access_token entry not found !\");",
+									"        }",
+									"        pm.environment.set('ACCESS_TOKEN', json.data.access_token);",
+									"        /*",
+									"        if (typeof(json.refresh_token) === \"undefined\"){",
+									"            throw new Error(\"refresh_token entry not found !\");",
+									"        }",
+									"        pm.environment.set('REFRESH_TOKEN', json.refresh_token);",
+									"        */",
+									"        console.log(pm.environment.values);",
+									"    } ",
+									"    catch(error) {",
+									"       throw new Error(\"JSON parse error: \"+ error);",
+									"    }",
+									"}",
+									"",
+									"setEnvironmentVar();",
+									"",
+									"//tests[\"returns good token_type \"] = jsonData.token_type === \"bearer\";",
+									"//postman.setEnvironmentVariable(\"token\", jsonData.access_token);",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"iamthewalrus\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
 				{
 					"name": "index",
 					"request": {
@@ -113,7 +373,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3001/products/cklcj1lem0000fciv2grdhe03",
+							"raw": "http://localhost:3001/products/cklrs6fdu0001cpugb6itfoza",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -121,7 +381,7 @@
 							"port": "3001",
 							"path": [
 								"products",
-								"cklcj1lem0000fciv2grdhe03"
+								"cklrs6fdu0001cpugb6itfoza"
 							]
 						}
 					},
@@ -140,8 +400,8 @@
 							},
 							{
 								"key": "Authorization",
-								"type": "text",
-								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldsY3pqSEQxZ1RvNkJYTjY1bXp3QyJ9.eyJpc3MiOiJodHRwczovL2Rldi0zdDJ6dWtzaS5ldS5hdXRoMC5jb20vIiwic3ViIjoiNHBzcG9pbEtNQ1lHeGNBTnNudEJqRkJnUzV3eDFrMnBAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYWRzLWFwaSIsImlhdCI6MTYxMTkzMzcyNywiZXhwIjoxNjEyMDIwMTI3LCJhenAiOiI0cHNwb2lsS01DWUd4Y0FOc250QmpGQmdTNXd4MWsycCIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.D-w3iapEgRItvBqPLHGlf67muIvfJVQ8QbWCauvDOjjw5ngd87w8Iio7dupiaPSILW4cnomIt5DFrOC1VLqOnyUG0PUH_zLxO-kA05X1Trs3hMDLG4bAsW3JO3N4arXhm0PntO6y8b8b0GEgnZLYzn6BCCCmFlKkYltGPDue0UFschTjchhbAFH4fAA7DGTREa4m8n1-rLMVwjIewhaTcWPDMYPx-5s4SRTj8J8lLFhFwkTPHl3x9ucJCht0Bl9PnJ_IDzZWbcGy1CxVFvdvH-6Jrqm3137Yq5mnD3EuEYLGPdzthjfIt8X4jmrCmc4zH4U5jJJkjhzmyQ8aR00D5g"
+								"value": "Bearer  {{ACCESS_TOKEN}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -172,6 +432,11 @@
 								"name": "Content-Type",
 								"type": "text",
 								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{ACCESS_TOKEN}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -179,7 +444,7 @@
 							"raw": "{\r\n    \"description\": \"TEST - Rug that really ties the room together\",\r\n    \"imgThumb\": \"https://images.unsplash.com/photo-1534889156217-d643df14f14a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjY0MjAxfQ\",\r\n    \"img\": \"https://images.unsplash.com/photo-1534889156217-d643df14f14a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjY0MjAxfQ\",\r\n    \"link\": \"https://unsplash.com/photos/Vra_DPrrBlE\",\r\n    \"userId\": \"GPlq8En0xhg\",\r\n    \"userName\": \"Ryan Christodoulou\",\r\n    \"userLink\": \"https://unsplash.com/@misterdoulou\",\r\n    \"tags\": [\r\n        \"rug\",\r\n        \"room\",\r\n        \"home\",\r\n        \"bowling\"\r\n    ]\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3001/products/cjv32mizj0003c9gl1p2nd24x",
+							"raw": "http://localhost:3001/products/cklrs6fdu0001cpugb6itfoza",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -187,7 +452,7 @@
 							"port": "3001",
 							"path": [
 								"products",
-								"cjv32mizj0003c9gl1p2nd24x"
+								"cklrs6fdu0001cpugb6itfoza"
 							]
 						}
 					},
@@ -203,6 +468,11 @@
 								"name": "Content-Type",
 								"type": "text",
 								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{ACCESS_TOKEN}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -210,7 +480,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3001/products/cklcj1lem0000fciv2grdhe03",
+							"raw": "http://localhost:3001/products/cklrs50690000cpugh2zi3xo7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -218,7 +488,122 @@
 							"port": "3001",
 							"path": [
 								"products",
-								"cklcj1lem0000fciv2grdhe03"
+								"cklrs50690000cpugh2zi3xo7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{ACCESS_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{ACCESS_TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/orders/cklrtfdkq0004cpuggrli0674",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"orders",
+								"cklrtfdkq0004cpuggrli0674"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer  {{ACCESS_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"buyerEmail\": \"walter@sobchak.io\",\r\n  \"products\": [\"cklrs6fdu0001cpugb6itfoza\"]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"orders"
 							]
 						}
 					},
@@ -353,6 +738,32 @@
 					"port": "3001",
 					"path": [
 						"6014226892469346003e54f1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3001/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						""
 					]
 				}
 			},
