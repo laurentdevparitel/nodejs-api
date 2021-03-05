@@ -5,15 +5,13 @@ const User = require('../models/User')
 
 async function list (req, res, next) {
 
-    const { offset = 0, limit = 25, productId, status } = req.query
+    const { offset = 0, limit = 25 } = req.query
 
     try {
 
         const users = await User.list({
             offset: Number(offset),
-            limit: Number(limit),
-            productId,
-            status
+            limit: Number(limit)
         })
 
         res.json({ data: users})
@@ -25,9 +23,9 @@ async function list (req, res, next) {
 async function get (req, res, next) {
 
     try {
-        const {id} = req.params
+        const {username} = req.params
 
-        const user = await User.get(id)
+        const user = await User.get(username)
         if (!user) return next()
         res.json({data: user})
     } catch (err) {
@@ -51,7 +49,7 @@ async function edit (req, res, next) {
 
     try {
         const change = req.body
-        const user = await User.edit(req.params.id, change)
+        const user = await User.edit(req.params.username, change)
         res.json({data: user})
     } catch (err) {
         res.status(500).json({ error: err.message })
@@ -59,7 +57,7 @@ async function edit (req, res, next) {
 }
 
 async function destroy (req, res, next) {
-    await User.remove(req.params.id)
+    await User.remove(req.params.username)
     res.json({ success: true })
 }
 

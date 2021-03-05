@@ -20,7 +20,6 @@ const cookieParser = require('cookie-parser')
 // middleware
 const middleware = require('./middlewares/middleware')
 
-
 // API
 const productController = require('./controllers/product')
 const orderController = require('./controllers/order')
@@ -60,19 +59,28 @@ app.disable('x-powered-by');
  * routes
  */
 
-app.post('/users', userController.create)
-
-app.post('/login', auth.authenticate, auth.login)
-
 app.get('/', (req, res) => {
     res.json({ data: `Welcome to ${global.gConfig.app_name} !` }).status(200);
 });
+
+// -- users
+app.get('/users', userController.list)
+app.get('/users/:username', userController.get)
+app.post('/users', userController.create)
+app.put('/users/:username', auth.ensureAdmin, userController.edit)
+app.delete('/users/:username', auth.ensureAdmin, userController.destroy)
+
+// -- auth
+app.post('/login', auth.authenticate, auth.login)
+
+// -- products
 app.get('/products', productController.list)
 app.get('/products/:id', productController.get)
 app.post('/products', auth.ensureAdmin, productController.create)
 app.put('/products/:id', auth.ensureAdmin, productController.edit)
 app.delete('/products/:id', auth.ensureAdmin, productController.destroy)
 
+// -- orders
 app.get('/orders', auth.ensureAdmin, orderController.list)
 app.get('/orders/:id', auth.ensureAdmin, orderController.get)
 app.post('/orders', auth.ensureAdmin, orderController.create)

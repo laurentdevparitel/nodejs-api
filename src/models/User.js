@@ -28,11 +28,11 @@ function usernameSchema () {
             },
             {
                 validator: str => !str.match(/^admin$/i),
-                message: props => 'Invalid username'
+                message: props => `Invalid username`
             },
             {
                 validator: function (username) { return isUnique(this, username) },
-                message: props => 'Username is taken'
+                message: props => `Username ${props.value} is taken`
             }
         ]
     }
@@ -66,7 +66,7 @@ async function list (opts = {}) {
 }
 
 async function get (username) {
-    const user = await User.findOne(username)
+    const user = await User.findOne({username})
     return user
 }
 

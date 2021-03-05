@@ -34,21 +34,33 @@ function session() {
 }*/
 
 function adminStrategy () {
-    return new Strategy(function (username, password, cb) {
+    return new Strategy(async function (username, password, cb) {
         const isAdmin = username === 'admin' && password === adminPassword
         if (isAdmin) return cb(null, { username: 'admin' })
+
+        try {
+            const user = await Users.get(username)
+            if (!user) return cb(null, false)
+
+            const isUser = await bcrypt.compare(password, user.password)
+            if (isUser) return cb(null, { username: user.username })
+        } catch (err) { }
 
         cb(null, false)
     })
 }
 
- const ensureAdmin = async (req, res, next) => {
+const ensureAdmin = async (req, res, next) => {
 
-    const jwtString = req.headers.authorization || req.cookies.jwt
-    const payload = await verify(jwtString)
-    if (payload.username === 'admin') return next()
+    try {
+        const jwtString = req.headers.authorization || req.cookies.jwt
+        const payload = await verify(jwtString)
 
-    res.status(401).json({ error: 'Unauthorized' })
+        if (payload.username === 'admin') return next()
+    }
+    catch (err){
+        res.status(401).json({ error: `Unauthorized : ${err}` })
+    }
 
     //const err = new Error('Unauthorized')
     //err.statusCode = 401
@@ -92,6 +104,7 @@ async function verify (jwtString = '') {
 
     try {
         const payload = await jwt.verify(jwtString, jwtSecret)
+        console.log(payload)
         return payload
     } catch (err) {
         err.statusCode = 401
